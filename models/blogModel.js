@@ -19,6 +19,10 @@ const Blog = sequelize.define('Blog', {
         type: DataTypes.TEXT,
         allowNull: false
     },
+    tags:{
+        type: DataTypes.STRING,
+        allowNull: false
+    }
 }, {
     tableName: 'blog',
     timestamps: false,

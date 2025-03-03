@@ -15,11 +15,12 @@ connection.connect((err) => {
         console.error('Error connecting to the database:', err.stack);
         return;
     }
+
+    app.use(express.json());
     app.use("/blog", require("./routes/blogRoutes"));
     app.use("/user", require("./routes/userRoutes"));
 
     //app.use(errorHandler);
-    app.use(express.json());
 
 
     app.listen(port, () => {
