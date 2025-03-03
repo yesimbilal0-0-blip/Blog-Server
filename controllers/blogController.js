@@ -1,7 +1,7 @@
 const asyncHandler = require('express-async-handler');
 const Blog = require('../models/blogModel');
 
-//Get Blogs
+//Get all Blogs
 const getBlogs = asyncHandler( async (req, res) => {
     const blogs = await Blog.findAll();
     res.status(200).json({
@@ -9,6 +9,7 @@ const getBlogs = asyncHandler( async (req, res) => {
     })
 })
 
+//Get a single Blog by ID
 const getBlog = asyncHandler( async (req, res) => {
     const blog = await Blog.findOne({
         where: {
