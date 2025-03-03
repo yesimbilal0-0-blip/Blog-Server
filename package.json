@@ -1,0 +1,26 @@
+{
+  "name": "blog-server",
+  "version": "1.0.0",
+  "description": "Blog Demo",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yesimbilal0-0-blip/Blog-Server.git"
+  },
+  "author": "Bilal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yesimbilal0-0-blip/Blog-Server/issues"
+  },
+  "homepage": "https://github.com/yesimbilal0-0-blip/Blog-Server#readme",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "nodemon": "^3.1.9"
+  }
+}
