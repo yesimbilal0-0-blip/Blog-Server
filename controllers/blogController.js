@@ -10,7 +10,7 @@ const getBlogs = asyncHandler( async (req, res) => {
 })
 
 //Get a single Blog by ID
-const getBlog = asyncHandler( async (req, res) => {
+const getBlogByID = asyncHandler( async (req, res) => {
     const blog = await Blog.findOne({
         where: {
             id: req.params.id
@@ -18,6 +18,18 @@ const getBlog = asyncHandler( async (req, res) => {
     });
     res.status(200).json({
         blog
+    })
+})
+
+//Get Blogs by Author
+const getBlogByAuthor = asyncHandler( async (req, res) => {
+    const blogs = await Blog.findAll({
+        where: {
+            author: req.params.author
+        }
+    });
+    res.status(200).json({
+        blogs
     })
 })
 
@@ -69,5 +81,6 @@ module.exports = {
     updateBlog,
     deleteBlog,
     postBlog,
-    getBlog
+    getBlogByID,
+    getBlogByAuthor
 }
