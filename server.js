@@ -10,20 +10,14 @@ const app = express();
 
 const port = process.env.PORT || 5000;
 
-connection.connect((err) => {
-    if (err) {
-        console.error('Error connecting to the database:', err.stack);
-        return;
-    }
 
-    app.use(express.json());
-    app.use("/blog", require("./routes/blogRoutes"));
-    app.use("/user", require("./routes/userRoutes"));
+app.use(express.json());
+app.use("/blog", require("./routes/blogRoutes"));
+app.use("/user", require("./routes/userRoutes"));
 
-    //app.use(errorHandler);
+//app.use(errorHandler);
 
 
-    app.listen(port, () => {
-        console.log(`Server is running on port ${port}`);
-    });
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
 });

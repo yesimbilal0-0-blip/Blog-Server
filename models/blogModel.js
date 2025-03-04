@@ -1,9 +1,5 @@
-const { Sequelize, DataTypes } = require('sequelize');
-
-const sequelize = new Sequelize('blog_db', 'root', '12345', {
-    dialect: 'mysql',
-    host: 'localhost'
-});
+const { DataTypes } = require('sequelize');
+const sequelize = require('../config/dbConnection');
 
 const Blog = sequelize.define('Blog', {
     id: {
@@ -19,7 +15,7 @@ const Blog = sequelize.define('Blog', {
         type: DataTypes.TEXT,
         allowNull: false
     },
-    tags:{
+    tags: {
         type: DataTypes.STRING,
         allowNull: false
     }
