@@ -2,6 +2,7 @@ const asyncHandler = require('express-async-handler');
 const User = require('../models/userModel');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const { validateToken, signToken } = require('../middleware/validateToken');
 
 //Register User
 const registerUser = asyncHandler( async (req, res) => {
@@ -49,14 +50,7 @@ const loginUser = asyncHandler( async (req, res) => {
         }
     });
     if(user && (await bcrypt.compare(password, user.password))){    
-        const token = jwt.sign({ user: { 
-            id: user.id, 
-            username: user.username, 
-            email: user.email
-        }
-        }, process.env.JWT_SECRET, {
-            expiresIn: '30d'
-        });
+        const token = signToken(user);
         res.status(200).json({
             message: "User Logged In",
             token

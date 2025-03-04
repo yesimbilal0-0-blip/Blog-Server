@@ -7,6 +7,10 @@ const Blog = sequelize.define('Blog', {
         autoIncrement: true,
         primaryKey: true
     },
+    author: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
     title: {
         type: DataTypes.STRING,
         allowNull: false
