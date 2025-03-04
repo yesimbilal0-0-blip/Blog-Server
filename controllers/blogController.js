@@ -26,6 +26,7 @@ const postBlog = asyncHandler( async (req, res) => {
     const { title, description, tags } = req.body;
     const blog = await Blog.create({
         title,
+        author: req.user.username,
         description,
         tags
     });
