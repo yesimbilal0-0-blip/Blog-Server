@@ -50,6 +50,18 @@ const postBlog = asyncHandler( async (req, res) => {
 //Update Blog
 const updateBlog = asyncHandler( async (req, res) => {
     const { title, description, tags } = req.body;
+    
+    const Vblog = await Blog.findOne({
+        where: {
+            id: req.params.id
+    }
+    });
+    
+    if(Vblog.author !== req.user.username){
+        res.status(401);
+        throw new Error('You are not authorized to update this blog');
+    }
+
     const blog = await Blog.update({
         title,
         description,
@@ -66,6 +78,17 @@ const updateBlog = asyncHandler( async (req, res) => {
 
 //Delete Blog
 const deleteBlog = asyncHandler( async (req, res) => {
+    const Vblog = await Blog.findOne({
+        where: {
+            id: req.params.id
+    }
+    });
+    
+    if(Vblog.author !== req.user.username){
+        res.status(401);
+        throw new Error('You are not authorized to delete this blog');
+    }
+
     const blog = await Blog.destroy({
         where: {
             id: req.params.id
