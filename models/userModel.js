@@ -23,6 +23,10 @@ const User = sequelize.define('User', {
         validate: {
             isEmail: true
         }
+    },
+    role: {
+        type: DataTypes.STRING,
+        allowNull:false
     }
 }, {
     tableName: 'User',

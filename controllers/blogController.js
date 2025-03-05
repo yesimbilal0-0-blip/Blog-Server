@@ -84,7 +84,7 @@ const deleteBlog = asyncHandler( async (req, res) => {
     }
     });
     
-    if(Vblog.author !== req.user.username){
+    if(req.user.role === "user" && Vblog.author !== req.user.username){
         res.status(401);
         throw new Error('You are not authorized to delete this blog');
     }

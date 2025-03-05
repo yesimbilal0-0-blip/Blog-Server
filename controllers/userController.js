@@ -28,7 +28,8 @@ const registerUser = asyncHandler( async (req, res) => {
     const user = await User.create({
         username,
         password: hashedPassword,
-        email
+        email,
+        role: "user"
     });
     res.status(201).json({
         message: "User Registered",
