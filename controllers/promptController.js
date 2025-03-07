@@ -27,7 +27,7 @@ const prompt = asyncHandler(async (req, res) => {
         const result = await model.generateContent(prompt);
 
         //Decrementing 1 from the prompt count
-        await Plan.update({ count: plan.count-1 }, { where: {username: req.user.username} });
+        await Plan.update({ count: plan.count-1 }, { where: {userid: req.user.id} });
 
         res.status(200).json( { answer: result.response.candidates[0].content.parts[0].text } );
     } catch (error) {

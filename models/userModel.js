@@ -35,7 +35,7 @@ const User = sequelize.define('User', {
     timestamps: false,
 });
 
-User.hasMany(Plan, { foreignKey: 'username', sourceKey: 'username' });
+User.hasMany(Plan, { foreignKey: 'userid', sourceKey: 'id' });
 
 sequelize.sync()
     .then(() => {
@@ -44,6 +44,5 @@ sequelize.sync()
     .catch(error => {
         console.error('Unable to create table:', error);
     });
-
 
 module.exports = User;

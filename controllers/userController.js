@@ -34,7 +34,7 @@ const registerUser = asyncHandler( async (req, res) => {
     });
 
     const plan = await Plan.create({
-        username
+        userid: user.id
     });
 
     res.status(201).json({

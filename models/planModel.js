@@ -8,12 +8,12 @@ const Plan = sequelize.define('Plan', {
         autoIncrement: true,
         primaryKey: true
     },
-    username:{
-        type: DataTypes.STRING,
+    userid:{
+        type: DataTypes.INTEGER,
         allowNull: false,
         references: {
             model: User,
-            key: 'username'
+           key: 'id'
         }
     },
     plan:{
@@ -32,7 +32,7 @@ const Plan = sequelize.define('Plan', {
     freezeTableName: true
 });
 
-sequelize.sync()
+sequelize.sync({ force: true })
     .then(() => {
         console.log("Plan table has been created.");
     })
