@@ -1,5 +1,6 @@
 const asyncHandler = require('express-async-handler');
 const User = require('../models/userModel');
+const Plan = require('../models/planModel');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const  { signToken } = require('../middleware/tokenHandler');
@@ -31,6 +32,11 @@ const registerUser = asyncHandler( async (req, res) => {
         email,
         role: "user"
     });
+
+    const plan = await Plan.create({
+        username
+    });
+
     res.status(201).json({
         message: "User Registered",
     })

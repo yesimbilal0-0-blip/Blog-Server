@@ -14,6 +14,7 @@ const port = process.env.PORT || 5000;
 app.use(express.json());
 app.use("/blog", require("./routes/blogRoutes"));
 app.use("/user", require("./routes/userRoutes"));
+app.use("/prompt", require("./routes/promptRoutes"));
 
 //app.use(errorHandler);
 

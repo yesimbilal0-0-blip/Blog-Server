@@ -1,5 +1,6 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/dbConnection');
+const Plan = require('./planModel');
 
 const User = sequelize.define('User', {
     id:{
@@ -32,10 +33,9 @@ const User = sequelize.define('User', {
     tableName: 'User',
     freezeTableName: true,
     timestamps: false,
+});
 
-
-} );
-
+User.hasMany(Plan, { foreignKey: 'username', sourceKey: 'username' });
 
 sequelize.sync()
     .then(() => {
